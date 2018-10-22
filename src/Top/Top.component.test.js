@@ -5,7 +5,7 @@ import Top from './Top.component';
 
 
 it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<ConnectedRouter><Top/></ConnectedRouter>, div);
-  ReactDOM.unmountComponentAtNode(div);
+    const div = document.createElement('div');
+    ReactDOM.render(<ConnectedRouter><Top/></ConnectedRouter>, div);
+    ReactDOM.unmountComponentAtNode(div);
 });
