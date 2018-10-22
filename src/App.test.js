@@ -1,9 +1,10 @@
+import App from './App';
+import ConnectedRouter from 'connected-react-router/lib/ConnectedRouter';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
+  ReactDOM.render(<ConnectedRouter><App/></ConnectedRouter>, div);
   ReactDOM.unmountComponentAtNode(div);
 });
