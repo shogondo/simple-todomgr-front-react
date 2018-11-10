@@ -1,18 +1,15 @@
-import ConnectedRouter from 'connected-react-router/lib/ConnectedRouter';
+import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactRouterEnzymeContext from 'react-router-enzyme-context';
 import Top from './Top.component';
-import { shallow } from 'enzyme';
+import { mount, configure } from 'enzyme';
 
-it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<ConnectedRouter><Top/></ConnectedRouter>, div);
-    ReactDOM.unmountComponentAtNode(div);
-});
+configure({ adapter: new Adapter() });
 
-// https://jestjs.io/docs/en/tutorial-react
+// https://github.com/express-labs/react-router-enzyme-context
 it('renders login button if user is not authenticated', () => {
-    const context = { router: { isActive: (a, b) => true } };
-    const wrapper = shallow(<Top/>, { context })
-    expect(wrapper.text()).toContain('A frontend of simple todo manager with React');
+    const options = new ReactRouterEnzymeContext();
+    const wrapper = mount(<Top/>, options.get());
+    const link = wrapper.find('Link');
+    expect(link.text()).toEqual('Login');
 });
