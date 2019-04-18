@@ -12,4 +12,5 @@ it('renders login button if user is not authenticated', () => {
     const wrapper = mount(<Top/>, options.get());
     const link = wrapper.find('Link');
     expect(link.text()).toEqual('Login');
+    expect(link.props().to).toEqual('/login');
 });
